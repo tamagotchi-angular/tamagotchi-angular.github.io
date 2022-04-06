@@ -1,0 +1,33 @@
+<div class="box">
+    <div class="wrapper">
+        <h4 *ngIf="petName" class="pet-name-text">{{petName}}
+            <i *ngIf="selectedGender" class="pet-name-gender-sign">{{ this.selectedGender == "female" ? '&female;' :'&male;'}} </i>
+        </h4>
+        <app-egg-svg></app-egg-svg>
+        <!--<app-dog-svg *ngIf="hasChosenPet" [ngClass]="{'dog' : hasChosenPet }"></app-dog-svg>-->
+        <img alt="item" class="pet-img" [src]="itemImageUrl">
+    </div>
+    <form #createForm="ngForm">
+        <div class="form group">
+            <label for="pet-name">Pet Name</label>
+            <input type="text" name="pet-name" id="pet-name" ngModel>
+        </div>
+        <div>
+            <label for="pet-type">Pet Type</label>
+            <select name="pet-type" id="pet-type" ngModel>
+                <option *ngFor="let pet of pets" [ngValue]="pet">{{pet}}</option>
+            </select>
+        </div>
+        <div class="gender">
+            <label id="gender-radio-group-label">Gender:</label>
+            <mat-radio-group aria-labelledby="gender-radio-group-label" class="gernder-radio-group"
+                [(ngModel)]="selectedGender" name="gender">
+                <mat-radio-button class="gender-radio-button" *ngFor="let gender of genderTypes" [value]="gender"
+                    color="primary">
+                    {{gender}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
