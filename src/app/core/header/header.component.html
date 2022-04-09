@@ -1,0 +1,44 @@
+<header>
+    <div class="mini-navbar-wrap">
+        <div class="logo-wrap">
+            <p class="logo"><span class="logo">Virtual Pet</span></p>
+        </div>
+        <div class="mini-navbar" *ngIf="!(isLoggedIn$ | async)">
+            <ul>
+                <li>
+                    <a routerLink="/login">Login</a>
+                </li>
+                <li>
+                    <a routerLink="/register">Register</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mini-navbar" *ngIf="(isLoggedIn$ | async)">
+            <li>
+                <a routerLink="/user/profile">{{( currentUser$ | async)?.email}}'s Profile</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" (click)="logoutHandler()">Logout</a>
+            </li>
+        </div>
+    </div>
+    <nav>
+        <ul>
+            <li>
+                <a routerLink="/">Home</a>
+            </li>
+            <li>
+                <a routerLink="/create">Create Pet</a>
+            </li>
+            <li>
+                <a routerLink="/my-pet">My Pet</a>
+            </li>
+            <li>
+                <a routerLink="/catalog">Catalog</a>
+            </li>
+            <li>
+                <a routerLink="/search">Search</a>
+            </li>
+        </ul>
+    </nav>
+</header>
