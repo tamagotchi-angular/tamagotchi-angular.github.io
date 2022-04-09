@@ -1,0 +1,17 @@
+.copyright::before {
+    content: "\f1f9";
+}
+
+p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.copyright {
+   
+    font-family: "Font Awesome 5 Free";
+    font-size: 12px;
+    font-style: normal;
+    
+}
+

@@ -1,0 +1,65 @@
+img {
+    display: flex;
+    max-width: 100%;
+    max-height: 100%
+}
+
+.home-page {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px 50px 50px 50px;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+}
+
+.pet-description,
+.home-image {
+    padding: 30px;
+}
+
+.last-pets {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pet-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    border: 2px solid #161616;
+    padding: 30px;
+    width: 200px;
+}
+
+.pet-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.btn {
+    border-radius: 10px;
+    background-color: #662D91;
+    padding: 10px;
+    font-family: "Poppins";
+    color: white;
+    width: 70%;
+    box-sizing: border-box;
+}

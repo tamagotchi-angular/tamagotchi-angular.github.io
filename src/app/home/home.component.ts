@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SVGEggComponent } from '../shared/egg/egg.component'
+
 
 @Component({
   selector: 'app-home',

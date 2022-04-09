@@ -5,15 +5,16 @@
         </h4>
         <app-egg-svg></app-egg-svg>
         <!--<app-dog-svg *ngIf="hasChosenPet" [ngClass]="{'dog' : hasChosenPet }"></app-dog-svg>-->
-        <img alt="item" class="pet-img" [src]="itemImageUrl">
+        <img *ngIf="hasChosenPet" alt="item" class="pet-img" [src]="itemImageUrl">
     </div>
     <form #createForm="ngForm">
+        <h1>Create your virtual pet!</h1>
         <div class="form group">
-            <label for="pet-name">Pet Name</label>
+            <label for="pet-name" class="table">Pet Name</label>
             <input type="text" name="pet-name" id="pet-name" ngModel>
         </div>
         <div>
-            <label for="pet-type">Pet Type</label>
+            <label for="pet-type" class="table">Pet Type</label>
             <select name="pet-type" id="pet-type" ngModel>
                 <option *ngFor="let pet of pets" [ngValue]="pet">{{pet}}</option>
             </select>
