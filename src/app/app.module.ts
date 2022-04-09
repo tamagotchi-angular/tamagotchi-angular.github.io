@@ -8,18 +8,17 @@ import { SharedModule } from './shared/shared.module';
 import { CreateComponent } from './create/create.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-
+import { HeaderComponent } from './core/header/header.component';
+import { FooterComponent } from './core/footer/footer.component'; 
 import {MatRadioModule} from '@angular/material/radio';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component'; 
+import { CoreModule } from './core/core.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CreateComponent,
-    HeaderComponent,
-    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +26,9 @@ import { FooterComponent } from './footer/footer.component';
     SharedModule,
     FormsModule,
     MatRadioModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CoreModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [
