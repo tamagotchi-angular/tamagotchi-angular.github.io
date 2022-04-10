@@ -13,6 +13,7 @@ import { FooterComponent } from './core/footer/footer.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -27,8 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     MatRadioModule,
     BrowserAnimationsModule,
-    CoreModule,
-    HttpClientModule
+    CoreModule.forRoot(),//initialize all services with 1 instance
+    HttpClientModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [

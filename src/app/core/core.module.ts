@@ -12,7 +12,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     FooterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     HeaderComponent,
@@ -31,7 +32,6 @@ export class CoreModule {
           useClass:  AuthInterceptor,
           multi: true
         }
-
       ]
     }
   }
