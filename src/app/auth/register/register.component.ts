@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
     'email': new FormControl('', [Validators.required, emailValidator]),
     'passwords': new FormGroup({
       'password': this.passwordControl,
-      'rePassword': new FormControl(passwordMatch(this.passwordControl)),
+      'rePassword': new FormControl(null, [passwordMatch(this.passwordControl)]),
     })
     
   })
@@ -35,5 +35,9 @@ export class RegisterComponent implements OnInit {
 
   shouldShowErrorForControl(controlName: string, sourceGroup: FormGroup = this.registerFormGroup) {
     return sourceGroup.controls[controlName].touched && sourceGroup.controls[controlName].invalid
+  }
+
+  isThereError(controlName: string, passwordsGroup: FormGroup){
+    return passwordsGroup.controls['rePassword']?.errors?.['passwordMissmatch']
   }
 }
