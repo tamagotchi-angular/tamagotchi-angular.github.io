@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { IUser } from './core/interfaces';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { environment} from '../environments/environment';
+import { environment } from '../environments/environment';
+import { CreateUserDto } from './core/interfaces/userDto'
 
-export interface CreateUserDto { email: string, password: string}
 
 @Injectable({
   providedIn: 'root'
@@ -22,24 +22,28 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
-  login$(userData: { email: string, password: string}): Observable<IUser | null> {
+  login$(userData: { email: string, password: string }): Observable<IUser | null> {
     return this.httpClient
-    .post<IUser>(`${environment.apiUrl}/users/login`, userData, {withCredentials: true, observe: 'response'})
-    .pipe(
-      map(response => response.body),
-    )
+      .post<IUser>(`${environment.apiUrl}/users/login`, userData, { withCredentials: true, observe: 'response' })
+      .pipe(
+        map(response => response.body),
+      )
   }
 
   logout$(): Observable<void> {
     return this.httpClient
-    .post<void>(`${environment.apiUrl}/users/logut`, {}, {withCredentials: true})
+      .post<void>(`${environment.apiUrl}/users/logout`, {}, { withCredentials: true })
   }
 
   register$(userData: CreateUserDto): Observable<IUser | Object> {
-    return this.httpClient.post(`${environment.apiUrl}/users/register`, userData, {withCredentials: true})
+    return this.httpClient.post(`${environment.apiUrl}/users/register`, userData, { withCredentials: true })
   }
 
   handleLogin(newUser: IUser) {
     this._currentUser.next(newUser);
+  }
+
+  handleLogout() {
+    this._currentUser.next(undefined);
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { SVGEggComponent } from '../shared/egg/egg.component'
-import { SVGDogComponent } from '../shared/dog/dog.component'
+import { SVGEggComponent } from '../../../shared/egg/egg.component'
+import { SVGDogComponent } from '../../../shared/dog/dog.component'
 import { GenderService } from './gender.service';
 
 

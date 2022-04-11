@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './feature/pets/home/home.component';
 import { SharedModule } from './shared/shared.module';
-import { CreateComponent } from './create/create.component';
+import { CreateComponent } from './feature/pets/create/create.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { HeaderComponent } from './core/header/header.component';
@@ -14,12 +14,12 @@ import {MatRadioModule} from '@angular/material/radio';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
+import { PetsModule } from './feature/pets/pets.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    CreateComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -30,7 +30,8 @@ import { AuthModule } from './auth/auth.module';
     BrowserAnimationsModule,
     CoreModule.forRoot(),//initialize all services with 1 instance
     HttpClientModule,
-    AuthModule
+    AuthModule,
+    PetsModule
   ],
   providers: [],
   bootstrap: [

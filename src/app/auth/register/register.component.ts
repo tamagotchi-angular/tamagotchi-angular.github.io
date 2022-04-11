@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
+import { CreateUserDto } from 'src/app/core/interfaces/userDto';
 import { emailValidator, passwordMatch } from '../util';
 
 @Component({
@@ -24,13 +27,22 @@ export class RegisterComponent implements OnInit {
     
   })
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   handleRegister(): void {
+    const { email, password } = this.registerFormGroup.value;
 
+    const body: CreateUserDto ={
+      email: email,
+      password: password
+    }
+
+    this.authService.register$(body).subscribe(() => {
+      this.router.navigate(['/home']);
+    });
   }
 
   shouldShowErrorForControl(controlName: string, sourceGroup: FormGroup = this.registerFormGroup) {
