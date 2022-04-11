@@ -15,6 +15,7 @@ export class AuthService {
 
   //logic for register, login and authentication when 1st load the app
   //notify all components that listen for this.currentuser 
+  //when subscribe to beh.subject we will get instance of IUSer, the last emitted value
   private _currentUser = new BehaviorSubject<IUser | undefined>(undefined);
   currentUser$ = this._currentUser.asObservable();
   isLoggedIn$ = this.currentUser$.pipe(map(user => !!user));
