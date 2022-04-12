@@ -32,7 +32,7 @@ export class AuthService {
 
   logout$(): Observable<void> {
     return this.httpClient
-      .post<void>(`${environment.apiUrl}/users/logout`, {}, )//{ withCredentials: true }
+      .post<void>(`${environment.apiUrl}/users/logout`, {} , )//{ withCredentials: true }
   }
 
   register$(userData: CreateUserDto): Observable<IUser | Object> {
