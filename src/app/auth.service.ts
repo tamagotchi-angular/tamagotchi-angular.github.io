@@ -24,7 +24,7 @@ export class AuthService {
 
   login$(userData: { email: string, password: string }): Observable<IUser | null> {
     return this.httpClient
-      .post<IUser>(`${environment.apiUrl}/users/login`, userData, { withCredentials: true, observe: 'response' })
+      .post<IUser>(`${environment.apiUrl}/users/login`, userData, { observe: 'response' })// withCredentials: true,
       .pipe(
         map(response => response.body),
       )
@@ -32,11 +32,11 @@ export class AuthService {
 
   logout$(): Observable<void> {
     return this.httpClient
-      .post<void>(`${environment.apiUrl}/users/logout`, {}, { withCredentials: true })
+      .post<void>(`${environment.apiUrl}/users/logout`, {}, )//{ withCredentials: true }
   }
 
   register$(userData: CreateUserDto): Observable<IUser | Object> {
-    return this.httpClient.post(`${environment.apiUrl}/users/register`, userData, { withCredentials: true })
+    return this.httpClient.post(`${environment.apiUrl}/users/register`, userData, )//{ withCredentials: true }
   }
 
   handleLogin(newUser: IUser) {
@@ -45,5 +45,10 @@ export class AuthService {
 
   handleLogout() {
     this._currentUser.next(undefined);
+  }
+
+  getAuthToken(): string | undefined{
+    const authToken = this._currentUser.value?.authToken
+    return authToken;
   }
 }

@@ -1,10 +1,12 @@
-import {ModuleWithProviders, NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthInterceptor } from './auth.interceptor';
-import { RouterModule} from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component'; 
+import { FooterComponent } from './footer/footer.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './jwt.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -22,14 +24,19 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   providers: []
 })
 
-export class CoreModule { 
+export class CoreModule {
   static forRoot(): ModuleWithProviders<CoreModule> {
     return {
       ngModule: CoreModule,
       providers: [
         {
           provide: HTTP_INTERCEPTORS,
-          useClass:  AuthInterceptor,
+          useClass: AuthInterceptor,
+          multi: true
+        },
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: JwtInterceptor,
           multi: true
         }
       ]

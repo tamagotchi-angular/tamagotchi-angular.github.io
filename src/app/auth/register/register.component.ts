@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
   }
 
   handleRegister(): void {
-    const { email, password } = this.registerFormGroup.value;
+    const { email, passwords: {password} } = this.registerFormGroup.value;
 
     const body: CreateUserDto ={
       email: email,
