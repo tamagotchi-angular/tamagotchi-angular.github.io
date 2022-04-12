@@ -6,6 +6,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
 import { PetsCatalogComponent } from './pets-catalog/pets-catalog.component';
+import { PetsRoutingModule } from './pets-routing.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { PetsCatalogComponent } from './pets-catalog/pets-catalog.component';
     SharedModule,
     FormsModule,
     MatRadioModule,
+    PetsRoutingModule
   ],
   exports: [
 
