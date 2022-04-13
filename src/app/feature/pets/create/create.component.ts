@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SVGEggComponent } from '../../../shared/egg/egg.component'
 import { SVGDogComponent } from '../../../shared/dog/dog.component'
-import { GenderService } from './gender.service';
+import { PetService } from 'src/app/core/pet.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,8 +16,9 @@ export class CreateComponent implements OnInit, AfterViewInit {
 
   @ViewChild('createForm') createForm!: NgForm;
 
-  constructor(private genderService: GenderService) { }
+  constructor(private router: Router,private petService: PetService) { }
 
+  select ='';
   genderTypes :string[] = ['female', 'male'];
   genderSign!:string;
   selectedGender!:string;
@@ -32,6 +34,23 @@ export class CreateComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
+  }
+
+  createNewPet(): void {
+    console.log(this.createForm.value);
+    this.petService.createPet(this.createForm.value).subscribe({
+      next: (pet) => {
+        console.log(pet);
+        this.router.navigate(['/catalog'])
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
+
+  navigateToHome() {
+    this.router.navigate(['/home']);
   }
 
   ngAfterViewInit(): void {

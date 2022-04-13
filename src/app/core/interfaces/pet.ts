@@ -1,7 +1,8 @@
 import { IBase } from "./base";
 import { IUser } from "./user";
 
-export interface IPost extends IBase {
+export interface IPet extends IBase {
+    petName: string;
     owner: IUser;
     likes: string[];
     friends: string[];

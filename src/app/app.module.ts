@@ -19,7 +19,6 @@ import { PetsModule } from './feature/pets/pets.module';
 @NgModule({
   declarations: [
     AppComponent,
-   
   ],
   imports: [
     BrowserModule,

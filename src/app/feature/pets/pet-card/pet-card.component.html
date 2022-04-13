@@ -1,0 +1,11 @@
+<div class="pet-box">
+    <div class="pet-content">
+        <img src="../../assets/images/cat-pet.jpg">
+        <p>Name:  <span>{{pet.petName}}</span></p>
+        <p>Level: <span>{{pet.status}}</span></p>
+        <p>Likes: <span>{{pet.likes.length}}</span></p>
+        <p>Date:  <time>{{pet.created_at | date: 'yyyy-MM-dd hh:mm:ss'}}</time></p>
+        <button type="submit" class="btn" [routerLink]="['/pet', pet._id]" class="normal">
+        View More</button>
+    </div>
+</div>

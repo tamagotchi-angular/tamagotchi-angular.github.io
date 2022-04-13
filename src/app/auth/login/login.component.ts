@@ -30,8 +30,9 @@ export class LoginComponent implements OnInit {
     console.log('form must be submitted')
     this.errorMessage = '';
     this.authService.login$(this.loginFormGroup.value).subscribe({
-      next: ()=> {                   // when we log in, http resp. will return user, next will be triggered and we will be given the user
-        this.router.navigate(['home']); //next will be invoked when s.b. emits value on the stream
+      next: (res: any)=> {                   // when we log in, http resp. will return user, next will be triggered and we will be given the user
+         //next will be invoked when s.b. emits value on the stream
+      this.router.navigate(['home']);
       },
       complete: () => {
         console.log('login stream completed');

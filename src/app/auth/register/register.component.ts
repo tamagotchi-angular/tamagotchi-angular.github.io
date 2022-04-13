@@ -29,6 +29,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
+  errorMessage: string = '';
+
   ngOnInit(): void {
   }
 
@@ -40,8 +42,16 @@ export class RegisterComponent implements OnInit {
       password: password
     }
 
-    this.authService.register$(body).subscribe(() => {
-      this.router.navigate(['/home']);
+    this.authService.register$(body).subscribe( {
+      next:(res:any) => {
+        this.router.navigate(['/home']);
+      },
+      complete: () => {
+        console.log('register stream completed');
+      },
+      error: (err) => {
+        this.errorMessage = err.error.message;
+      }
     });
   }
 

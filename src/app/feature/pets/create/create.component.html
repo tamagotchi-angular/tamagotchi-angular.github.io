@@ -7,17 +7,35 @@
         <!--<app-dog-svg *ngIf="hasChosenPet" [ngClass]="{'dog' : hasChosenPet }"></app-dog-svg>-->
         <img *ngIf="hasChosenPet" alt="item" class="pet-img" [src]="itemImageUrl">
     </div>
-    <form #createForm="ngForm">
+    <form #createForm="ngForm" (ngSubmit)="createNewPet()">
         <h1>Create your virtual pet!</h1>
         <div class="form group">
             <label for="pet-name" class="table">Pet Name</label>
-            <input type="text" name="pet-name" id="pet-name" ngModel>
+            <input #petNameInput="ngModel" type="text" name="pet-name" id="pet-name" ngModel required minlength="3">
+      
+            <ng-container *ngIf="petNameInput.touched && petNameInput.invalid">
+                <p *ngIf="petNameInput.errors?.['required']" class="error">
+                    Theme name is required.
+                </p>
+                <p *ngIf="petNameInput.errors?.['minlength']" class="error">
+                    Theme name must be at least 3 characters long.
+                </p>
+            </ng-container>
         </div>
         <div>
             <label for="pet-type" class="table">Pet Type</label>
-            <select name="pet-type" id="pet-type" ngModel>
+            <select #selectPetType="ngModel" appSelectValidator="select" name="pet-type" id="pet-type" ngModel  required>
+                <option [ngValue]="select">Select Pet Type</option>
                 <option *ngFor="let pet of pets" [ngValue]="pet">{{pet}}</option>
             </select>
+            <ng-container *ngIf="selectPetType.touched && selectPetType.invalid">
+                <p *ngIf="selectPetType.errors?.['required']" class="error">
+                    Theme name is required.
+                </p>
+                <p *ngIf="selectPetType.errors?.['minlength']" class="error">
+                    Theme name must be at least 3 characters long.
+                </p>
+            </ng-container>
         </div>
         <div class="gender">
             <label id="gender-radio-group-label">Gender:</label>

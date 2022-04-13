@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './jwt.interceptor';
+import { PetService } from './pet.service';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
+        PetService,
         {
           provide: HTTP_INTERCEPTORS,
           useClass: AuthInterceptor,

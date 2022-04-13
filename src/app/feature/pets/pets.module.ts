@@ -7,6 +7,9 @@ import { FormsModule } from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
 import { PetsCatalogComponent } from './pets-catalog/pets-catalog.component';
 import { PetsRoutingModule } from './pets-routing.module';
+import { PetCardComponent } from './pet-card/pet-card.component';
+import { PetDetailsComponent } from './pet-details/pet-details.component';
+import { SelectValidatorDirective } from './create/select-validator.directive';
 
 
 @NgModule({
@@ -14,6 +17,9 @@ import { PetsRoutingModule } from './pets-routing.module';
     HomeComponent,
     CreateComponent,
     PetsCatalogComponent,
+    PetCardComponent,
+    PetDetailsComponent,
+    SelectValidatorDirective,
   ],
   imports: [
     CommonModule, 

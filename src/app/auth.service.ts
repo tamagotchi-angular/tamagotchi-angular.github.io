@@ -48,7 +48,7 @@ export class AuthService {
   }
 
   getAuthToken(): string | undefined{
-    const authToken = this._currentUser.value?.authToken
+    const authToken = this._currentUser.value?.accessToken
     return authToken;
   }
 }
