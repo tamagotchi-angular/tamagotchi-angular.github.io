@@ -2,7 +2,8 @@ import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, map} from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
-import { IPet } from 'src/app/core/interfaces';
+import { IPet, IUser } from 'src/app/core/interfaces';
+import { PetService } from 'src/app/core/pet.service';
 
 @Component({
   selector: 'app-pet-details',
@@ -13,10 +14,11 @@ export class PetDetailsComponent implements OnInit, OnChanges {
 
   canFriend$!: Observable<boolean>
   hasLiked$!: Observable<boolean>
+  currentUser$: Observable<IUser | undefined> = this.authService.currentUser$;
 
   @Input() pet!: IPet;
 
-  constructor(private activatedRoute: ActivatedRoute, private authService: AuthService) { }
+  constructor(private activatedRoute: ActivatedRoute, private authService: AuthService, private petService: PetService) { }
 
   ngOnInit(): void {
   }
@@ -37,4 +39,6 @@ export class PetDetailsComponent implements OnInit, OnChanges {
     }))
 
   }
+
+  
 }

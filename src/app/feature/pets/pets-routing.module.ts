@@ -19,6 +19,6 @@ const routes: Routes = [
         path:'create',
         canActivate: [AuthGuard],
         component: CreateComponent
-    }
+    },
 ]
 export const PetsRoutingModule = RouterModule.forChild(routes);
