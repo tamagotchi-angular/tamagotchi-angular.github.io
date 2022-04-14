@@ -6,6 +6,8 @@ import { IPet } from './interfaces';
 
 const apiUrl = environment.apiUrl;
 
+export interface IUpdateIPetDto extends Pick<IPet, 'petPicture'>{ }
+
 @Injectable()
 export class PetService {
 
@@ -13,6 +15,10 @@ export class PetService {
 
   createPet(body: { ['pet-name']: string, ['pet-type']: string, gender: string}): Observable<IPet>{
     return this.httpClient.post<IPet>(`${apiUrl}/data/catalog`, body)
+  }
+
+  loadPetCatalog(searchTerm: string = ''): Observable<IPet[]>{
+    return this.httpClient.get<IPet[]>(`${apiUrl}/data/catalog?name=${searchTerm}`);
   }
 
   loadPetById(petId: string): Observable<IPet>{

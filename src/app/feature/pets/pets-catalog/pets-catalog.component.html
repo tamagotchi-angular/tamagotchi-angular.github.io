@@ -1,4 +1,6 @@
-<p>pets-catalog works!</p>
+<form>
+  <input [formControl] = "searchControl" type="text" placeholder="Search the tamagotchi catalog">
+</form>
 <main>
     <div *ngIf="petCatalog">
         <app-pet-card *ngFor="let pet of petCatalog" [pet]="pet"></app-pet-card>

@@ -14,6 +14,7 @@
                 <li>
                     <a routerLink="/register">Register</a>
                 </li>
+                <p *ngIf="message" [ngClass]="{'error-message' : isMessageError, 'success-message': !isMessageError}" class="notification">{{message}}</p>
             </ul>
         </div>
         <div class="mini-navbar" *ngIf="(isLoggedIn$ | async)">

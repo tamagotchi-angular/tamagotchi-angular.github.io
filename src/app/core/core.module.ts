@@ -7,20 +7,26 @@ import { FooterComponent } from './footer/footer.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './jwt.interceptor';
 import { PetService } from './pet.service';
-
+import { RadarChartComponent } from './radar-chart/radar-chart.component';
+import { NgChartsModule } from 'ng2-charts';
+import { ErrorHandlerInterceptor } from './error-handler.interceptor';
+import { MessageBusService } from './message-bus.service';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    RadarChartComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    NgChartsModule
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    RadarChartComponent
   ],
   providers: []
 })
@@ -31,6 +37,7 @@ export class CoreModule {
       ngModule: CoreModule,
       providers: [
         PetService,
+        MessageBusService,
         {
           provide: HTTP_INTERCEPTORS,
           useClass: AuthInterceptor,
@@ -40,6 +47,12 @@ export class CoreModule {
           provide: HTTP_INTERCEPTORS,
           useClass: JwtInterceptor,
           multi: true
+        },
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: ErrorHandlerInterceptor,
+          multi: true
+
         }
       ]
     }

@@ -1,11 +1,9 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './feature/pets/home/home.component';
 import { SharedModule } from './shared/shared.module';
-import { CreateComponent } from './feature/pets/create/create.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { HeaderComponent } from './core/header/header.component';
@@ -15,6 +13,7 @@ import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
 import { PetsModule } from './feature/pets/pets.module';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -30,9 +29,18 @@ import { PetsModule } from './feature/pets/pets.module';
     CoreModule.forRoot(),//initialize all services with 1 instance
     HttpClientModule,
     AuthModule,
-    PetsModule
+    PetsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (authService: AuthService) => {
+        return () => authService.authenticate();
+      },
+      deps: [ AuthService],
+      multi: true
+    }
+  ],
   bootstrap: [
     AppComponent,
     HeaderComponent,

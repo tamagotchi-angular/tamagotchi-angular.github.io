@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
 import { PetsCatalogComponent } from './pets-catalog/pets-catalog.component';
 import { PetsRoutingModule } from './pets-routing.module';
 import { PetCardComponent } from './pet-card/pet-card.component';
 import { PetDetailsComponent } from './pet-details/pet-details.component';
 import { SelectValidatorDirective } from './create/select-validator.directive';
+import { CoreModule } from 'src/app/core/core.module';
 
 
 @NgModule({
@@ -26,7 +27,9 @@ import { SelectValidatorDirective } from './create/select-validator.directive';
     SharedModule,
     FormsModule,
     MatRadioModule,
-    PetsRoutingModule
+    PetsRoutingModule,
+    CoreModule,
+    ReactiveFormsModule
   ],
   exports: [
 

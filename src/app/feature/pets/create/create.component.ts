@@ -41,7 +41,7 @@ export class CreateComponent implements OnInit, AfterViewInit {
     this.petService.createPet(this.createForm.value).subscribe({
       next: (pet) => {
         console.log(pet);
-        this.router.navigate(['/catalog'])
+        this.router.navigate(['/catalog/' + pet._id])
       },
       error: (error) => {
         console.log(error);

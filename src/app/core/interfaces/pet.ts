@@ -13,4 +13,5 @@ export interface IPet extends IBase {
     status: string,
     created_at: string;
     updatedAt: string;
+    petPicture: File
 }
