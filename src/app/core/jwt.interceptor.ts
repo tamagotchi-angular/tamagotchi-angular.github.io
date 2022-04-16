@@ -8,12 +8,13 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { PetService } from './pet.service';
 
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private petService: PetService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
@@ -24,12 +25,12 @@ export class JwtInterceptor implements HttpInterceptor {
       let authRequest = request.clone({
         headers: request.headers.set('X-Authorization', `${authToken}`).set('Content-Type', 'application/json')
       })
-
-      if(request.body){
-        authRequest = request.clone({
-          headers: request.headers.set('Content-Type', 'application/json')
-        });
-      }
+  
+      // if(request.body){
+      //   authRequest = request.clone({
+      //     headers: request.headers.set('Content-Type', 'application/json')
+      //   });
+      // }
       return next.handle(authRequest);
     }
 

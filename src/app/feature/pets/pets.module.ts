@@ -11,6 +11,7 @@ import { PetCardComponent } from './pet-card/pet-card.component';
 import { PetDetailsComponent } from './pet-details/pet-details.component';
 import { SelectValidatorDirective } from './create/select-validator.directive';
 import { CoreModule } from 'src/app/core/core.module';
+import { MypetsComponent } from './mypets/mypets.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { CoreModule } from 'src/app/core/core.module';
     PetCardComponent,
     PetDetailsComponent,
     SelectValidatorDirective,
+    MypetsComponent,
   ],
   imports: [
     CommonModule, 

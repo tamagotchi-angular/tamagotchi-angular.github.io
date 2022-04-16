@@ -52,7 +52,6 @@ export class CoreModule {
           provide: HTTP_INTERCEPTORS,
           useClass: ErrorHandlerInterceptor,
           multi: true
-
         }
       ]
     }

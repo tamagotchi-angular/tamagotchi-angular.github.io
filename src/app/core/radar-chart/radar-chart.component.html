@@ -1,11 +1,16 @@
 <div>
     <div>
       <div style="display: block">
-        <canvas baseChart
+        <canvas baseChart #baseChart="base-chart"
           [data]="radarChartData"
           [options]="radarChartOptions"
-          [type]="radarChartType">
+          [labels]="radarChartLabels"
+          [type]="radarChartType"
+          >
         </canvas>
+        <form>
+        <button id="params" (click)="update()"></button>
+      </form>
       </div>
     </div>
   </div>

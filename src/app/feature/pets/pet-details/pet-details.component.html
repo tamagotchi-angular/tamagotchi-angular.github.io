@@ -1,4 +1,38 @@
-<ng-container *ngIf="">
-    <app-radar-chart></app-radar-chart>
+<ng-container *ngIf="isUserOwner">
+    <div class="row-space-between">
+        <app-radar-chart></app-radar-chart>
+    </div>
+    <div class="row-space-between">
+        <div class="card-image-container">
+            <div class="card-image">
+                <div class="PetImage">
+                    <img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNiYAAAAAkAAxkR2eQAAAAASUVORK5CYII=">
+                </div>
+            </div>
+            <div class="card-image-text-details">
+                <img class="product-type-icon-details" src="/static/media/elem-ghost.048e6818.svg" alt="icon">
+            </div>
+        </div>
+        <div class="product-description">
+            <div class="product-description-left">
+                <div class="Row ">
+                    <p class="product-info-number">{{pet.petName}}</p>
+                    <div class="product-verified"></div>
+                </div>
+                <p class="product-description-left-item">Level: {{pet.level}}</p>
+                <p class="product-description-left-item">Created: {{pet.created_at}}</p>
+            </div>
+        </div>
+    </div>
 </ng-container>
-
+<ng-container *ngIf="!isUserOwner">
+    <div class="wrapper">
+    <app-egg-svg></app-egg-svg>
+    <img *ngIf="pet" alt="item" class="pet-img" [src]="itemImageUrl">
+    </div>
+    <div *ngIf="(isLoggedIn$ | async)">
+        <button (click)="friend()" *ngIf="canFriend$" class="subscribe">Friend</button>
+        <button (click)="unfriend()" *ngIf="!canFriend$" class="unsubscribe">UnFriend</button>
+    </div>
+</ng-container>

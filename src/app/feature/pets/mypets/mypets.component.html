@@ -1,3 +1,4 @@
+<div *ngFor="let pet of petsArr">
 <div class="pet-box">
     <div class="pet-content">
         <img src="../../assets/images/cat-pet.jpg">
@@ -8,4 +9,5 @@
         <button type="submit" class="btn" [routerLink]="['/catalog', pet._id]" class="normal">
         View More</button>
     </div>
+</div>
 </div>

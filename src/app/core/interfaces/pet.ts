@@ -3,15 +3,16 @@ import { IUser } from "./user";
 
 export interface IPet extends IBase {
     petName: string;
-    owner: IUser;
+    owner: IUser['_id'];
     likes: string[];
     friends: string[];
     trainMeter : number,
     sleepMeter : number,
     bathMeter : number,
     eatMeter : number,
-    status: string,
+    level: string,
     created_at: string;
     updatedAt: string;
-    petPicture: File
+    type: string
+    //petPicture: File
 }

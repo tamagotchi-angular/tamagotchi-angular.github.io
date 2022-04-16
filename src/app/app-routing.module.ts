@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './feature/pets/home/home.component';
+import { MypetsComponent } from './feature/pets/mypets/mypets.component';
+
 
 const routes: Routes = [
   {
@@ -12,7 +14,10 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent
   },
-
+  {
+    path: 'my-pet',
+    component: MypetsComponent
+ }
 ];
 
 @NgModule({
